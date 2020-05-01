@@ -1,15 +1,30 @@
-with open("../data/training/new_train_prun_chunks.hi") as f:
-	data = f.readlines()
+import pickle
+chunks = {}
 
-chunk_list = {}
+prev = ""
+words = []
 
-for line in data:
-	chunks = line.strip().split()
-	for chunk in chunks:
-		temp = " ".join(chunk.split("_"))
-		if temp not in chunk_list:
-			chunk_list[temp] = 1
+with open("../chunk_features_with_predicted_chunk_tag") as f:
+	for line in f:
+		tp = line.strip().split()
+		if len(tp) < 2:
+			continue
+		chunk_tag = tp[2].strip()
+		word = tp[0].strip()
+		temp = chunk_tag.split("-")[0].strip()
 
-with open("../data/training/hindi_chunk_list.txt", "w") as f:
-	for chunk in chunk_list.keys():
-		f.write(chunk.strip() + "\n")
+		if prev == "" and temp == "B":
+			words.append(word)
+			prev = "B"
+
+		elif prev != "" and temp == "I":
+			words.append(word)
+			prev = "I"
+
+		elif prev != "" and temp == "B":
+			chunk = " ".join(words)
+			chunks[chunk] = 1
+			words = [word]
+			prev = "B"
+
+pickle.dump(chunks, open("../data/chunk_list.pkl", "wb"))
