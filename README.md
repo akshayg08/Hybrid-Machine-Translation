@@ -2,7 +2,7 @@
 
 ## Explaining the Program
 
-Performance of Neural Machine Translation (NMT) systems on low resource languages is not as good as the performance of language pairs with sufficient amounts of data. For some low resource language pairs, performance of Statistical Machine Translation (SMT) systems are comparable or better than NMT. In this project, we attempt to combine best of SMT and NMT to create a Hybrid Machine Translation system which is able to perform better than SMT and NMT on loe resource languages.
+Performance of Neural Machine Translation (NMT) systems on low resource languages is not as good as the performance of language pairs with sufficient amounts of data. For some low resource language pairs, performance of Statistical Machine Translation (SMT) systems are comparable or better than NMT. In this project, we attempt to combine best of SMT and NMT to create a Hybrid Machine Translation system which is able to perform better than SMT and NMT on low resource languages.
 
 ## Approach
 
